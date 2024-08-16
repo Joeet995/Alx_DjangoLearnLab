@@ -24,7 +24,7 @@ def register(request):
             return redirect("Login")
     else:
         form = UserCreationForm()
-    return render(request, "register.html", {"form":form})
+    return render(request, "relationship_app/register.html", {"form":form})
 
 class LoginView(login.LoginView):
     template_name = "login.html"
