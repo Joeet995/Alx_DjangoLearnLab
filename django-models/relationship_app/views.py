@@ -36,3 +36,10 @@ def is_admin(user):
 @user_passes_test(is_admin)
 def admin_view(request):
     return render(request, template_name="relationship_app/admin_view.html")
+
+def is_librarian(user):
+    return user.is_autheticated and user.UserProfile.role == 'Librarian'
+
+@user_passes_test(is_librarian)
+def librarian_view(request):
+    return render(request, template_name="relationship_app/librarian_view.html")
