@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Book
 from .models import Library
 from django.views.generic.detail import DetailView
-from django.contrib.auth import login
+from django.contrib.auth import views
 from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
@@ -26,5 +26,5 @@ def register(request):
         form = UserCreationForm()
     return render(request, "relationship_app/register.html", {"form":form})
 
-class LoginView(login.LoginView):
+class LoginView(views.LoginView):
     template_name = "login.html"
