@@ -31,4 +31,4 @@ class Librarian(models.Model):
     
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
-    role = models.CharField(choices=("Member", "Admin", "Librarians"),null=False)
+    role = models.CharField(choices=("Member", "Admin", "Librarian"),null=False)
