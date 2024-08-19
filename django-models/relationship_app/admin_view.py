@@ -1,10 +1,11 @@
-from django.contrib.auth.decorators import user_passes_test
+from django.contrib.auth.decorators import user_passes_test, login_required
 from django.shortcuts import render
 from . import models
 
-def is_admin(user):
-    return user.is_autheticated and user.UserProfile.role == 'Admin'
+def is_librarian(user):
+    return user.UserProfile.role == 'Admin'
 
-@user_passes_test(is_admin)
+@login_required
+@user_passes_test(is_librarian)
 def admin_view(request):
     return render(request, template_name="relationship_app/admin_view.html")
