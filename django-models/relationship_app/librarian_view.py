@@ -4,7 +4,7 @@ from . import models
 
 
 def is_librarian(user):
-    return  user.UserProfile.role == 'Librarian'
+    return  user.UserProfile.role == 'Librarians'
 
 @login_required
 @user_passes_test(is_librarian)

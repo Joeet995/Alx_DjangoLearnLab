@@ -41,7 +41,7 @@ class Librarian(models.Model):
 class UserProfile(models.Model):
     USER_ROLES = [
         ('Admin', 'Admin'),
-        ('Librarian', 'Librarian'),
+        ('Librarians', 'Librarians'),
         ('Member', 'Member'),
     ]
 
