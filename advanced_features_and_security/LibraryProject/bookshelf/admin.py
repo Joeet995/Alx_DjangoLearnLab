@@ -6,10 +6,10 @@ class CustomUserAdmin(UserAdmin):
     pass
 
 # Register your models here.
-class BookAdmin(admin.ModelAdmin):
-    list_display = ('title', 'author', 'publication_year')
-    search_fields = ('title', 'author')
-    list_filter = ('title', 'author', 'publication_year')
+# class BookAdmin(admin.ModelAdmin):
+#     list_display = ('title', 'author', 'publication_year')
+#     search_fields = ('title', 'author')
+#     list_filter = ('title', 'author', 'publication_year')
 
-admin.site.register(CustomUserAdmin, CustomUser)
-admin.site.register(Book, BookAdmin)
+admin.site.register(CustomUser, CustomUserAdmin)
+# admin.site.register(Book, BookAdmin)
