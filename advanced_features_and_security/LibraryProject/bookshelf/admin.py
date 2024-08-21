@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Book, CustomUser
 from django.contrib.auth.admin import UserAdmin
 
-class ModelAdmin(UserAdmin):
+class CustomUserAdmin(UserAdmin):
     pass
 
 # Register your models here.
@@ -11,4 +11,4 @@ class BookAdmin(admin.ModelAdmin):
     search_fields = ('title', 'author')
     list_filter = ('title', 'author', 'publication_year')
 
-admin.site.register(Book, BookAdmin, ModelAdmin, CustomUser)
+admin.site.register(Book, BookAdmin, CustomUserAdmin, CustomUser)
