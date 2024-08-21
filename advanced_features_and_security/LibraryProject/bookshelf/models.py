@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractUser, BaseUserManager
 
 class CustomUserManager(BaseUserManager):
     
-    def create_user(self, email, password):
+    def create_user(self, email, password, date_of_birth):
         if not email:
             raise ValueError("Users must have an Email")
         user = self.model(email=self.normalize_email(email))
@@ -21,8 +21,16 @@ class CustomUserManager(BaseUserManager):
 
         
 class CustomUser(AbstractUser):
-    date_of_birth = models.DateField(null=False)
+    date_of_birth = models.DateField()
     profile_photo = models.ImageField()
+
+    class Meta:
+        permissions = [
+            ('can_view', 'Can View'),
+            ('can_edit', 'Can Edit'),
+            ('can_create', 'Can Create'),
+            ('can_delete', 'Can Delete')
+        ]
 
 
 class Book(models.Model):
