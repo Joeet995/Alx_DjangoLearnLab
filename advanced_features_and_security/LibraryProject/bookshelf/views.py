@@ -5,7 +5,7 @@ from .models import Book, Bookform
 
 # Create your views here.
 @permission_required('relationship_app.can_edit', raise_exception=True)
-def edit_book(request, pk):
+def edit_books(request, pk):
     book = get_object_or_404(Book, pk=pk)
     if request.method == "POST":
         form = Bookform(request.POST, instance=book)
