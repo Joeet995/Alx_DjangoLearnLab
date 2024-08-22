@@ -1,5 +1,8 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser, BaseUserManager
+from django.contrib.auth.models import AbstractUser, BaseUserManager, Permission, Group
+from django.contrib.contenttypes.models import ContentType
+from django import form
+
 
 class CustomUserManager(BaseUserManager):
     
@@ -31,6 +34,21 @@ class CustomUser(AbstractUser):
             ('can_create', 'Can Create'),
             ('can_delete', 'Can Delete')
         ]
+    
+    Viewers = Group.objects.get_or_create(name="Viewers")
+    
+    Editors = Group.objects.get_or_create(name="Editors")
+
+    editing_permission = Permission.objects.create(code_name='can_edit',
+                                                   name= 'Can Edit'
+                                                   )
+    Editors.permissions.add(editing_permission)
+
+    Admins = Group.objects.get_or_create(name="Admins")
+
+
+
+
 
 
 class Book(models.Model):
@@ -42,5 +60,8 @@ class Book(models.Model):
     def __str__(self):
        return f"title = {self.title},author = {self.author}, publication_year = {self.publication_year}"
     
-
+class Bookform(form.ModelForm):
+        class Meta:
+            model = Book
+            fields = ['title', 'author', 'publication_year']
 
