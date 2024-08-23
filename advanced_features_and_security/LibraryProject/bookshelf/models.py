@@ -42,11 +42,12 @@ class Book(models.Model):
     
     class Meta:
         permissions = [
-            ('view', 'Can View'),
-            ('edit', 'Can Edit'),
-            ('create', 'Can Create'),
+            ('can_view', 'Can View'),
+            ('can_edit', 'Can Edit'),
+            ('can_create', 'Can Create'),
+            ('can_delete', 'Can Delete')
         ]
-        
+
     Viewers = Group.objects.get_or_create(name="Viewers")
     
     Editors = Group.objects.get_or_create(name="Editors")
