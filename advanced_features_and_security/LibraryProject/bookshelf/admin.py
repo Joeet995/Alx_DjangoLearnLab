@@ -3,13 +3,16 @@ from .models import Book, CustomUser
 from django.contrib.auth.admin import UserAdmin
 
 class CustomUserAdmin(UserAdmin):
-    pass
+    model = CustomUser
+    firld = UserAdmin.fieldsets + (
+        (None, {"fields": ("date of birth", "ptofile photo",)})
+    )
 
-# Register your models here.
-# class BookAdmin(admin.ModelAdmin):
-#     list_display = ('title', 'author', 'publication_year')
-#     search_fields = ('title', 'author')
-#     list_filter = ('title', 'author', 'publication_year')
+
+class BookAdmin(admin.ModelAdmin):
+    list_display = ('title', 'author', 'publication_year')
+    search_fields = ('title', 'author')
+    list_filter = ('title', 'author', 'publication_year')
 
 admin.site.register(CustomUser, CustomUserAdmin)
-# admin.site.register(Book, BookAdmin)
+admin.site.register(Book, BookAdmin)

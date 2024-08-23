@@ -27,26 +27,6 @@ class CustomUser(AbstractUser):
     date_of_birth = models.DateField()
     profile_photo = models.ImageField()
 
-    class Meta:
-        permissions = [
-            ('can_view', 'Can View'),
-            ('can_edit', 'Can Edit'),
-            ('can_create', 'Can Create'),
-            ('can_delete', 'Can Delete')
-        ]
-    
-    Viewers = Group.objects.get_or_create(name="Viewers")
-    
-    Editors = Group.objects.get_or_create(name="Editors")
-
-    editing_permission = Permission.objects.create(code_name='can_edit',
-                                                   name= 'Can Edit'
-                                                   )
-    Editors.permissions.add(editing_permission)
-
-    Admins = Group.objects.get_or_create(name="Admins")
-
-
 
 
 
@@ -59,6 +39,24 @@ class Book(models.Model):
 
     def __str__(self):
        return f"title = {self.title},author = {self.author}, publication_year = {self.publication_year}"
+    
+    class Meta:
+        permissions = [
+            ('view', 'Can View'),
+            ('edit', 'Can Edit'),
+            ('create', 'Can Create'),
+        ]
+        
+    Viewers = Group.objects.get_or_create(name="Viewers")
+    
+    Editors = Group.objects.get_or_create(name="Editors")
+
+    editing_permission = Permission.objects.create(code_name='can_edit',
+                                                   name= 'Can Edit'
+                                                   )
+    Editors.permissions.add(editing_permission)
+
+    Admins = Group.objects.get_or_create(name="Admins")
     
 class Bookform(form.ModelForm):
         class Meta:
