@@ -15,3 +15,16 @@ def edit_books(request, pk):
     else:
         form = Bookform(instance=book)
     return render(request, 'relationship_app/edit_book.html', {'form': form})
+
+from .forms import ExampleForm
+
+def example_form_view(request):
+    if request.method == 'POST':
+        form = ExampleForm(request.POST)
+        if form.is_valid():
+            # Process the form data
+            return render(request, 'bookshelf/form_success.html')
+    else:
+        form = ExampleForm()
+
+    return render(request, 'bookshelf/form_example.html', {'form': form})
