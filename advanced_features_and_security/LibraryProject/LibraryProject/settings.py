@@ -129,3 +129,29 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'bookshelf.CustomUser'
+
+SECURE_BROWSER_XSS_FILTER = True
+X_FRAME_OPTIONS = 'DENY'
+SECURE_CONTENT_TYPE_NOSNIFF = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+
+CSP_DEFAULT_SRC = ("'self",)
+CSP_STYLE_SRC = ("'self", 'https://fonts.googleapis.com',)
+CSP_SCRIPT_SRC = ("'self", 'https://ajax.googleapis.com')
+
+#Redirect all HTTP request to HTTPS
+SECURE_SSL_REDIRECT = True
+
+#HTTP strict transport security (HSTS)
+SECURE_HSTS_SECONDS = 31536000 # ONE YEAR
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
+#SECURE COOKIES
+SESSION_COOKIE_SECURE = True
+
+#SECURE SSL HEADER
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'hTTPS')
+
+
