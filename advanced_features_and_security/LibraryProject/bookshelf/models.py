@@ -48,16 +48,16 @@ class Book(models.Model):
             ('can_delete', 'Can Delete')
         ]
 
-    Viewers = Group.objects.get_or_create(name="Viewers")
+    # Viewers = Group.objects.get_or_create(name="Viewers")
     
-    Editors = Group.objects.get_or_create(name="Editors")
+    # Editors = Group.objects.get_or_create(name="Editors")
 
-    editing_permission = Permission.objects.create(code_name='can_edit',
-                                                   name= 'Can Edit'
-                                                   )
-    Editors.permissions.add(editing_permission)
+    # editing_permission = Permission.objects.create(code_name='can_edit',
+    #                                                name= 'Can Edit'
+    #                                                )
+    # Editors.permissions.add(editing_permission)
 
-    Admins = Group.objects.get_or_create(name="Admins")
+    # Admins = Group.objects.get_or_create(name="Admins")
     
 class Bookform(form.ModelForm):
         class Meta:
