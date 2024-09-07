@@ -19,3 +19,14 @@ class AuthorSerializer(serializers.ModelSerializer):
     class Meta():
         model = Author
         fields = ['id','name', 'books']
+
+# The BookSerializer serializes all fields of the Book model, allowing
+    # conversion between Book model instances and formats like JSON.
+    #
+    # Custom validation ensures that the publication_year cannot be set to a future year.
+        # Custom validation to ensure that the publication_year is not set to a future year.
+ # The AuthorSerializer serializes the name of the author and dynamically includes
+    # a nested list of related books using the BookSerializer.
+    #
+    # The nested BookSerializer serializes the related books of an author, which are accessed via the
+    # reverse relationship through the 'books' related_name on the ForeignKey field.
