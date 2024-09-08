@@ -8,7 +8,7 @@ from django.urls import reverse
 import datetime
 from rest_framework.test import APITestCase, APIClient
 from django.contrib.auth.models import User
-from rest_framework.filters import DjangoFilterBackend
+from rest_framework_filters import DjangoFilterBackend
 
 
 # ListView: Retrieve all books

@@ -1,4 +1,4 @@
 if arg:
  git add .
- git cpmmot -m arg
+ git commit -m arg
  git push
