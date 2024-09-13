@@ -123,10 +123,11 @@ def search_posts(request):
     return render(request, 'blog/search_results.html', {'results': results, 'query': query})
     
 
-class TaggedPostListView(ListView):
+class PostByTagListView(ListView):
     model = Post
     template_name = 'blog/tagged_posts.html'
 
     def get_queryset(self):
         tag_name = self.kwargs['tag_name']
         return Post.objects.filter(tags__name__iexact=tag_name)
+
