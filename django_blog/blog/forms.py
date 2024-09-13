@@ -21,3 +21,14 @@ class PostForm(forms.ModelForm):
         widgets = {
             'tags': TagWidget(),  # Specify the TagWidget for the tags field
         }
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['content']
+
+    def clean_content(self):
+        content = self.cleaned_data.get('content')
+        if not content or content.is_space():
+            raise forms.ValidationError("Comment cannot be empty")
+        return content
