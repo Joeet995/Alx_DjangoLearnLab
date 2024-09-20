@@ -23,4 +23,4 @@ class Like(models.Model):
     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
 
     class Meta:
-        unique_together = ('post', 'user')
+        unique_together = ('post', 'author')

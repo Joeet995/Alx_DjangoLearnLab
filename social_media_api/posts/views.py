@@ -9,6 +9,7 @@ from rest_framework.views import APIView
 from notifications.models import Notification
 from .models import Like
 
+
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
@@ -54,7 +55,7 @@ class LikePostView(generics.CreateAPIView):
             return Response({"message": "Post liked."}, status=201)
         return Response({"message": "You already liked this post."}, status=400)
 
-Post.objects.filter(author__in='following_users').order_by('-timestamp')
+# Post.objects.filter(author__in=following_users).order_by('-timestamp')
 
 class UnlikePostView(generics.DestroyAPIView):
     permission_classes = [permissions.IsAuthenticated]
