@@ -56,4 +56,16 @@ class LikePostView(generics.CreateAPIView):
 
 Post.objects.filter(author__in='following_users').order_by('-timestamp')
 
+class UnlikePostView(generics.DestroyAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def delete(self, request, pk):
+        post = generics.get_object_or_404(Post, pk=pk)
+        try:
+            like = Like.objects.get(user=request.user, post=post)
+            like.delete()
+            return Response({"message": "Post unliked."}, status=204)
+        except Like.DoesNotExist:
+            return Response({"message": "You have not liked this post."}, status=400)
+
 
