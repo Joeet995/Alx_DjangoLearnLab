@@ -28,7 +28,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         )
         Token.objects.create(user=user)
         return user
-    get_user_model().objects.create_user()
+    # get_user_model().objects.create_user()
 
 
 
